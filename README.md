@@ -31,6 +31,18 @@ Requirements:
 - requests
 - pandas
 
+## Process
+- Gathered pokeapi, url
+- Read through documentation
+- Created class that allowed me to gather the necessary files,
+  as well as the ability to create a csv with every pokemon listed in the api.
+- Stored values into a csv using this code
+  ```
+  all_refs = client.get_all_pokemon_refs()
+  r = requests.get("https://pokeapi.co/api/v2/pokemon?limit=100000")
+  with open("pokemon_list_raw.json", "w") as f:
+      f.write(r.text)
+  
 Run:
 ```bash
-python your_script_name.py
+python script.py
