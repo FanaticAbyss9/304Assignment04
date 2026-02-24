@@ -2,14 +2,14 @@ import requests
 import pandas as pd
 
 class PokeAPI:
-    BASE_URL = "https://pokeapi.co/api/v2"
+    base_url = "https://pokeapi.co/api/v2"
 
     def get_pokemon_list_page(self, limit=20, offset=0):
         """
         GET /pokemon?limit=...&offset=...
         Returns the raw requests.Response and parsed JSON dict.
         """
-        url = f"{self.BASE_URL}/pokemon"
+        url = f"{self.base_url}/pokemon"
         params = {"limit": limit, "offset": offset}
         r = requests.get(url, params=params)
         r.raise_for_status()
@@ -26,7 +26,7 @@ class PokeAPI:
 
     def get_all_pokemon_refs(self):
         """Return list of all pokemon name/url pairs"""
-        url = f"{self.BASE_URL}/pokemon?limit=100000"
+        url = f"{self.base_url}/pokemon?limit=100000"
         r = requests.get(url)
         r.raise_for_status()
         return r.json()["results"]
